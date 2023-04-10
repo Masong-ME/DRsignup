@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<img src=""
+
+<body>
+    <div data-type="form-body">
+        <!--
+            Log in form here
+        -->
+        <div class="active" data-actual-form data-form="login">
+            <h1>Log in to the account</h1>
+            <form target="YOUR_TARGET">
+                <label data-input>
+                    <span data-instruction>
+                        Email
+                    </span>
+                    <input type="Email" id="loginEmail" placeholder="Enter Your email" required>
+                </label><br>
+                <label data-input>
+                    <span data-instruction>
+                        Password
+                    </span>
+                    <span class="password">
+                        <input type="password" placeholder="Password">
+                    </span>
+                </label><br>
+                <label data-input>
+                    <span data-instruction>
+                        Click to Log in
+                    </span>
+                    <span>
+                        <input type="submit" onclick="loginErrorMessg()" value="Log In">
+                    </span>
+                    <span>
+                        <p id="loginErrorMessage"></p>
+                    </span>
+                </label><br>
+                <p>
+                    Don't have an account <a href="javascript:toggleform()">register here</a> .<br>
+                    By Logging in you accept our <a href="#YOUR_TERMS">terms of use</a> .
+
+                </p>
+
+            </form>
+        </div>
+        <!--
+          register form here
+        -->
+        <div class="hidden" data-actual-form data-form="register">
+            <h1>Register An account</h1>
+            <form target="YOUR_TARGET">
+                <label data-input>
+                    <span data-instruction>
+                        Name
+                    </span>
+                    <input type="text" placeholder="Enter Your Name" required>
+                </label><br>
+                <label data-input>
+                    <span data-instruction>
+                        Email
+                    </span>
+                    <input type="email" id="myEmail" placeholder="Enter Your Email" required>
+                </label><br>
+
+                <label for="city">City</label>
+
+               <select name="cars" id="cars">
+                   <option value="volvo">Buea</option>
+                   <option value="saab">Kumba</option>
+                   <option value="mercedes">Limbe</option>
+                   <option value="audi">Douala</option>
+                   <option value="audi">Tiko</option>
+                </select>
+                <br>
+
+                <label data-input>
+                    <span data-instruction>
+                        Create Password
+                    </span>
+                    <span class="password">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </span>
+
+                </label><br>
+                <label data-input>
+                    <span data-instruction>
+                        Confirm Password
+                    </span>
+                    <span class="password">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </span>
+
+                </label><br>
+                <label>
+                    <span data-instruction>
+                        Click to Register
+                    </span>
+                    <span class="password">
+                        <input onclick="errorMessg()" type="submit" value="Register">
+                    </span>
+
+                </label>
+                <span>
+                    <p id="errorMessage"></p>
+                </span>
+                <p>
+                    Already have an account <a href="javascript:toggleform()">Log in here</a> .<br>
+                    By registering you accept our <a href="#YOUR_TERMS">terms of use</a> .
+
+                </p>
+            </form>
+        </div>
+    </div>
+    <script>
+        var toggleform = () => { document.querySelector("[data-form=register]").classList.contains("active") ? (document.querySelector("[data-form=register]").classList.remove("active"), document.querySelector("[data-form=register]").classList.add("hidden")) : (document.querySelector("[data-form=register]").classList.remove("hidden"), document.querySelector("[data-form=register]").classList.add("active")), document.querySelector("[data-form=login]").classList.contains("active") ? (document.querySelector("[data-form=login]").classList.remove("active"), document.querySelector("[data-form=login]").classList.add("hidden")) : (document.querySelector("[data-form=login]").classList.remove("hidden"), document.querySelector("[data-form=login]").classList.add("active")); let intvrl = 100; let vrl = setInterval(e => { console.log(intvrl); document.querySelectorAll("[data-actual-form]").forEach(e => { e.style.filter = `blur(${--intvrl}px)`; }); console.log(intvrl); if (intvrl == 0) { clearInterval(vrl); intvrl = 100; document.querySelectorAll("[data-actual-form]").forEach(e => { e.style.filter = `blur(0px)`; }); } }, 0.1) }
+
+
+    </script>
+    <script>
+        function errorMessg() {
+
+
+            let showError = document.getElementById("errorMessage")
+
+            if (isNaN(document.getElementById("myEmail").value)) {
+                showError.textContent = "The entered Email is not valid"
+                showError.style.color = "red"
+            } else {
+                showError.textContent = "Registration Successful!"
+                showError.style.color = "green"
+            }
+
+
+        }
+    </script>
+
+    <script>
+        function loginErrorMessg() {
+
+
+            let showError = document.getElementById("loginErrorMessage")
+
+            if (isNaN(document.getElementById("loginEmail").value)) {
+                showError.textContent = "The entered Email is not valid"
+                showError.style.color = "red"
+            } else {
+                showError.textContent = "Welcome to Digital Rentals"
+                showError.style.color = "green"
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
